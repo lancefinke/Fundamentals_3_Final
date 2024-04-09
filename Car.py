@@ -1,7 +1,7 @@
 class Car:
 
 
-    def __init__(self,make,model,year,color,mileage,transmission,ID):
+    def __init__(self,make:str,model:str,year:str,color:str,mileage:int,transmission:str,ID:int):
         self.make=make
         self.model=model
         self.year=year
@@ -29,12 +29,7 @@ class Car:
     def setMiles(self,newMileage):self.mileage=newMileage
     def setTrans(self,newTransmission):self.transmission=newTransmission
     def setID(self,newID):self.ID=newID
-    
 
-c1 = Car("Ford","Mustang","2014","red",51423,"manual",1)
 
-print(c1.getMiles())
-c1.setMiles(4641)
-print(c1.getMiles())
 
 
