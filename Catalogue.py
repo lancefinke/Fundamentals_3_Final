@@ -1,6 +1,6 @@
-import Car as car
+from Car import Car as car
 
-c1 = Car("Ford","Mustang","2014","red",51423,"manual",1)
+c1 = car("Ford","Mustang","2014","red",51423,"manual",1)
 
 print(c1.getMiles())
 c1.setMiles(4641)
