@@ -1,5 +1,7 @@
 class Car:
 
+    verification:bool=False
+
 
     def __init__(self,make:str,model:str,year:str,color:str,mileage:int,price:float, transmission:str,ID:int):
         self.make=make
@@ -10,6 +12,8 @@ class Car:
         self.price=price
         self.transmission=transmission
         self.ID=ID
+        
+        
 
     #All of the access methods
 
@@ -21,6 +25,7 @@ class Car:
     def getPrice(self):return self.price
     def getTrans(self):return self.transmission
     def getID(self):return self.ID
+    def getVerification(self):return self.verification
 
     #All of the modifier methods
 
@@ -32,6 +37,7 @@ class Car:
     def setPrice(self,newPrice):self.price=newPrice
     def setTrans(self,newTransmission):self.transmission=newTransmission
     def setID(self,newID):self.ID=newID
+    def verify(self):self.verification=True
 
 
 
