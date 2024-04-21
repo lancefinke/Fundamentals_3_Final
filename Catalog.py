@@ -18,7 +18,24 @@ car_list = [Car('ford','mustang','2014','red',47859,20000.00,'manual',20),
 #dictionary that keeps track of the quantities of every make, every model, and every year
 attribute_quantities:dict = {}
 
-
+#placing data in attribute_quanitities to see if it works
+for car in car_list:
+    #counts total amount of specific year
+    if not car.getMake() in attribute_quantities:
+        attribute_quantities[car.getMake()]=1
+    else:
+        attribute_quantities[car.getMake()]+=1
+    #counts total amount of specific model
+    if not car.getModel() in attribute_quantities:
+        attribute_quantities[car.getModel()]=1
+    else:
+        attribute_quantities[car.getModel()]+=1
+    #counts total amount of specific year
+    if not car.getYear() in attribute_quantities:
+        attribute_quantities[car.getYear()]=1
+    else:
+        attribute_quantities[car.getYear()]+=1
+    
 
 def sortByID(list): #quicksort algorithm
     if len(list)<2:
@@ -37,8 +54,10 @@ def sortByID(list): #quicksort algorithm
 def findID(list,low,high,ID): #binary search algorithm
     if high >= low:
 
+        #finds midpoint
         mid = (high+low) // 2
 
+        #returns car information of ID matches
         if list[mid].getID() == ID:
             return list[mid].toString()
         
@@ -49,7 +68,38 @@ def findID(list,low,high,ID): #binary search algorithm
             return findID(list,mid+1,high,ID)
         
     else:
-        return f'Could not find car with ID number of {ID}'
+        return f'Could not find a car with ID number of {ID}'
+    
+#returns all cars of a specific make, model, or year
+#user will be promted to enter in a number based on what they want to find
+def findSpecs(action:int): #linear search algorithm
+    found=False
+    match action:
+        case 1:
+            target = input("Please enter your desired Make: ").lower()
+            for car in car_list:
+                if car.getMake()==target:
+                    found=True
+                    print(car.toString()+'\n')
+            if not found:
+                print(f"No {target}s were found")
+        case 2:
+            target = input("Please enter your desired Model: ").lower()
+            for car in car_list:
+                if car.getModel()==target:
+                    found=True
+                    print(car.toString()+'\n')
+            if not found:
+                print(f"No {target}s were found")
+        case 3:
+            target = input("Please enter your desired year: ")
+            for car in car_list:
+                if car.getYear()==target:
+                    found=True
+                    print(car.toString()+'\n')
+            if not found:
+                print(f"No cars from {target} were found")
+
 
 
 
@@ -64,8 +114,18 @@ for i in car_list:
     print(i.getID())
 
 #test if findID works
+#in the final product, SortBYID will be called before 
+#findID is executed
 print(findID(car_list,0,len(car_list)-1,10))
 print(findID(car_list,0,len(car_list)-1,1))
+
+print(attribute_quantities)
+
+#testing the findSpecs function, UI will mkae process easier
+findSpecs(1)
+findSpecs(2)
+findSpecs(3)
+
 
 
 
