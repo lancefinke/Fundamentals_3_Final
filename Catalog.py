@@ -20,7 +20,7 @@ attribute_quantities:dict = {}
 
 
 
-def sortByID(list):
+def sortByID(list): #quicksort algorithm
     if len(list)<2:
         return list
     else:
@@ -33,6 +33,28 @@ def sortByID(list):
         more  = [i for i in list if i.getID() > pivotID]
         return sortByID(less) + sortByID(more)
     
+
+def findID(list,low,high,ID): #binary search algorithm
+    if high >= low:
+
+        mid = (high+low) // 2
+
+        if list[mid].getID() == ID:
+            return list[mid].toString()
+        
+        elif list[mid].getID() > ID:
+            return findID(list,low,mid-1,ID)
+        
+        else:
+            return findID(list,mid+1,high,ID)
+        
+    else:
+        return f'Could not find car with ID number of {ID}'
+
+
+
+
+    
 #test if sortByID works:
 for i in car_list:
     print(i.getID())
@@ -40,6 +62,12 @@ car_list = sortByID(car_list)
 print('\n')
 for i in car_list:
     print(i.getID())
+
+#test if findID works
+print(findID(car_list,0,len(car_list)-1,10))
+print(findID(car_list,0,len(car_list)-1,1))
+
+
 
 
 

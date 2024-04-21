@@ -39,6 +39,10 @@ class Car:
     def setID(self,newID):self.ID=newID
     def verify(self):self.verification=True
 
+    #toString method
+    def toString(self):
+        return f"Make: {self.make}\nModel: {self.model}\nYear: {self.year}\nColor: {self.color}\nMileage: {self.mileage}\nPrice: ${self.price}\nTransmission: {self.transmission}\nID#: {self.ID}\n"
+
 
 
 
