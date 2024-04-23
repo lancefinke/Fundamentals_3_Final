@@ -12,14 +12,58 @@
             "verified": true
         },
         {
-            "make": "chevrolet",
-            "model": "silverado",
-            "year": "2018",
-            "color": "white",
-            "mileage": 94807,
-            "price": 28000.0,
+            "make": "honda",
+            "model": "civic",
+            "year": "2020",
+            "color": "blue",
+            "mileage": 180000,
+            "price": 5000.0,
             "transmission": "automatic",
-            "ID": 5,
+            "ID": 3,
+            "verified": true
+        },
+        {
+            "make": "nissan",
+            "model": "altima",
+            "year": "1992",
+            "color": "red",
+            "mileage": 54921,
+            "price": 40000.0,
+            "transmission": "manual",
+            "ID": 12,
+            "verified": false
+        },
+        {
+            "make": "nissan",
+            "model": "altima",
+            "year": "1992",
+            "color": "red",
+            "mileage": 54921,
+            "price": 40000.0,
+            "transmission": "manual",
+            "ID": 12,
+            "verified": false
+        },
+        {
+            "make": "nissan",
+            "model": "altima",
+            "year": "2005",
+            "color": "red",
+            "mileage": 54921,
+            "price": 40000.0,
+            "transmission": "manual",
+            "ID": 12,
+            "verified": true
+        },
+        {
+            "make": "nissan",
+            "model": "altima",
+            "year": "1995",
+            "color": "red",
+            "mileage": 54921,
+            "price": 40000.0,
+            "transmission": "manual",
+            "ID": 12,
             "verified": true
         }
     ]

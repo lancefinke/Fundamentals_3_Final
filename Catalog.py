@@ -9,6 +9,8 @@ car_list=[]
 attribute_quantities:dict = {}
 
 
+
+
 def  updateDict(car:Car): #called when adding a car
     if not car.getMake() in attribute_quantities:
         attribute_quantities[car.getMake()]=1
@@ -25,7 +27,8 @@ def  updateDict(car:Car): #called when adding a car
     else:
         attribute_quantities[car.getYear()]+=1
 
-
+'''verifies that the make, model and year enetred
+are indeed from a real car.'''
 def verifyCar(car:Car):
     make = car.getMake().lower()
     model = car.getModel().lower()
@@ -116,26 +119,38 @@ def findSpecs(action:int): #linear search algorithm
                 print(f"No cars from {target} were found")
 
 
+def updateJSON(car:Car):
+    carObj = {
+        "make":car.getMake(),
+        "model":car.getModel(),
+        "year":car.getYear(),
+        "color":car.getColor(),
+        "mileage":car.getMiles(),
+        "price":car.getPrice(),
+        "transmission":car.getTrans(),
+        "ID":car.getID(),
+        "verified":car.getVerification()
+         }
+    with open("Car_Storage.json", 'r+') as file:
+        data = json.load(file)
+        data["Garage"].append(carObj)
+        file.seek(0)
+        json.dump(data,file,indent=4)
 
-'''with open("Car_Storage.json", 'r+') as file:
-    y={"make":"chevrolet",
-       "model":"silverado",
-       "year":"2018",
-       "color":"white",
-       "mileage":94807,
-       "price":28000.00,
-       "transmission":"automatic",
-       "ID":5,
-       "verified":True}
-    data = json.load(file)
-    data["Garage"].append(y)
-    file.seek(0)
-    json.dump(data,file,indent=4)'''
+
+c1 = Car("nissan","altima","1995","red",54921,40000.00,"manual",12)
 
 
-c1 = Car("Honda","Civic","2020","blue",180000,5000.00,"manual",1)
 print(c1.getVerification())
 verifyCar(c1)
 print(c1.getVerification())
+car_list.append(c1)
+updateDict(c1)
+print(attribute_quantities["nissan"])
+updateJSON(c1)
+
+
+
+
 
 
