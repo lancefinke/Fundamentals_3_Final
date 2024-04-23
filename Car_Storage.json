@@ -1,0 +1,26 @@
+{
+    "Garage": [
+        {
+            "make": "ford",
+            "model": "mustang",
+            "year": "2014",
+            "color": "red",
+            "mileage": 103564,
+            "price": 20905.0,
+            "transmission": "manual",
+            "ID": 10,
+            "verified": true
+        },
+        {
+            "make": "chevrolet",
+            "model": "silverado",
+            "year": "2018",
+            "color": "white",
+            "mileage": 94807,
+            "price": 28000.0,
+            "transmission": "automatic",
+            "ID": 5,
+            "verified": true
+        }
+    ]
+}

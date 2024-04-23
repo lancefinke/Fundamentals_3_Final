@@ -3,39 +3,54 @@ from Car import Car
 import requests
 import json
 
-
-
-'''list of every car in catalog
-is filled with cars right now for testing purposes, 
-but final product will load in cars from JSON files'''
-
-car_list = [Car('ford','mustang','2014','red',47859,20000.00,'manual',20),
-            Car('chevrolet','silverado','2018','white',94877,28000.50,'automatic',14),
-            Car('subaru','brz','2020','blue',50487,19450.00,'manual',3),
-            Car('chevrolet','blazer','1991','dark green',20145,10000.00,'automatic',7),
-            Car('dodge','challenegr','2010','black',111023,15000.00,'automatic',10)]
-
+#list of every car in catalog
+car_list=[]
 #dictionary that keeps track of the quantities of every make, every model, and every year
 attribute_quantities:dict = {}
 
-#placing data in attribute_quanitities to see if it works
-for car in car_list:
-    #counts total amount of specific year
+
+def  updateDict(car:Car): #called when adding a car
     if not car.getMake() in attribute_quantities:
         attribute_quantities[car.getMake()]=1
     else:
         attribute_quantities[car.getMake()]+=1
-    #counts total amount of specific model
+    
     if not car.getModel() in attribute_quantities:
         attribute_quantities[car.getModel()]=1
     else:
         attribute_quantities[car.getModel()]+=1
-    #counts total amount of specific year
+   
     if not car.getYear() in attribute_quantities:
         attribute_quantities[car.getYear()]=1
     else:
         attribute_quantities[car.getYear()]+=1
+
+
+def verifyCar(car:Car):
+    make = car.getMake().lower()
+    model = car.getModel().lower()
+    year = car.getYear()
+
+    api_url = 'https://api.api-ninjas.com/v1/cars?make={}&model={}&year={}'.format(make,model,year)
+    response = requests.get(api_url, headers={'X-Api-Key': 'F+ibc8OExQ83IKX/e3JJmQ==xsvvtTv25O4EXop3'})
+    data = response.json()
+    if(data!=[]):
+        car.verify()
     
+
+
+#loads Json data and creates car_list
+with open("Car_Storage.json","r") as file:
+    data=json.load(file)
+    for object in data["Garage"]:
+        tempCar = Car(object["make"],object["model"],object["year"],object["color"],
+                            object["mileage"],object["price"],object["transmission"],object["ID"],)
+        if object["verified"]==True:
+            tempCar.verify()
+        updateDict(tempCar)
+        car_list.append(tempCar)
+
+
 
 def sortByID(list): #quicksort algorithm
     if len(list)<2:
@@ -75,7 +90,7 @@ def findID(list,low,high,ID): #binary search algorithm
 def findSpecs(action:int): #linear search algorithm
     found=False
     match action:
-        case 1:
+        case 1: #finds all desired models
             target = input("Please enter your desired Make: ").lower()
             for car in car_list:
                 if car.getMake()==target:
@@ -83,7 +98,7 @@ def findSpecs(action:int): #linear search algorithm
                     print(car.toString()+'\n')
             if not found:
                 print(f"No {target}s were found")
-        case 2:
+        case 2: #finds all desired makes
             target = input("Please enter your desired Model: ").lower()
             for car in car_list:
                 if car.getModel()==target:
@@ -91,7 +106,7 @@ def findSpecs(action:int): #linear search algorithm
                     print(car.toString()+'\n')
             if not found:
                 print(f"No {target}s were found")
-        case 3:
+        case 3: #finds all desired years
             target = input("Please enter your desired year: ")
             for car in car_list:
                 if car.getYear()==target:
@@ -102,48 +117,25 @@ def findSpecs(action:int): #linear search algorithm
 
 
 
+'''with open("Car_Storage.json", 'r+') as file:
+    y={"make":"chevrolet",
+       "model":"silverado",
+       "year":"2018",
+       "color":"white",
+       "mileage":94807,
+       "price":28000.00,
+       "transmission":"automatic",
+       "ID":5,
+       "verified":True}
+    data = json.load(file)
+    data["Garage"].append(y)
+    file.seek(0)
+    json.dump(data,file,indent=4)'''
 
 
-    
-#test if sortByID works:
-for i in car_list:
-    print(i.getID())
-car_list = sortByID(car_list)
-print('\n')
-for i in car_list:
-    print(i.getID())
+c1 = Car("Honda","Civic","2020","blue",180000,5000.00,"manual",1)
+print(c1.getVerification())
+verifyCar(c1)
+print(c1.getVerification())
 
-#test if findID works
-#in the final product, SortBYID will be called before 
-#findID is executed
-print(findID(car_list,0,len(car_list)-1,10))
-print(findID(car_list,0,len(car_list)-1,1))
-
-print(attribute_quantities)
-
-#testing the findSpecs function, UI will mkae process easier
-findSpecs(1)
-findSpecs(2)
-findSpecs(3)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#GET request to car API
-'''api_url = 'https://api.api-ninjas.com/v1/cars?make={}&model={}&year={}'.format("ford","mustang","2014")
-response = requests.get(api_url, headers={'X-Api-Key': 'F+ibc8OExQ83IKX/e3JJmQ==xsvvtTv25O4EXop3'})
-data = response.json()
-print(data!=[])'''
 
