@@ -13,9 +13,12 @@ Main_Catalog.loadData()
 
 
 #keeps track of every used ID.
-used_IDs = {}
+used_IDs = []
+for car in Main_Catalog.getCarList():
+    used_IDs.append(car.getID())
 
-regex = r"^[1,2][0,9][0-2][0-4]+$"
+#array that validates date
+regex =[r"^[1][9]+$",r"^[2][0]+$",r"^[0,1][0-9]+$",r"^[2][0-4]+$"]
 
 
 '''verifies that the make, model and year enetred
@@ -31,9 +34,11 @@ def verifyCar(car:Car):
     if(data!=[]):
         car.verify()
 
-print("Welcome to the Car Catalog. Please enter in a command or type 'Help' for Help\n")
+print("\nWelcome to the Car Catalog!")
 
 while True:
+    sleep(1)
+    print( "\nPlease enter in a command or type 'Help' for Help\n")
     print("\n1) List All Cars\n2) Add Car\n3) Remove Car\n4) Save Data\n5) Sort Cars\n6) Find Car\n7) Find cars with specific make, model or year\n8) Exit\n")
     choice = input("Enter in a command: ").lower()#makes help command case insensitive
     match choice:
@@ -51,8 +56,17 @@ while True:
             year = ""
             while True:
                 year = input("\nwhat year was the car made: ")
-                if re. match(regex, year) and len(year)==4:
-                    break
+                if len(year)==4:
+                    if re. match(regex[0], year[:2]):
+                        if re. match(r"^\d\d+$",year[2:]):
+                            break
+                        else:
+                           print("\nPlease enter in a valid year")
+                    elif re. match(regex[1],year[0:2]):
+                        if  re. match(regex[2],year[2:]) or re. match(regex[3],year[2:]):
+                            break
+                        else:
+                           print("\nPlease enter in a valid year") 
                 else:
                     print("\nPlease enter in a valid year")
             color = input("\nWhat color is the car: ")
@@ -89,13 +103,17 @@ while True:
                         print("\nPlease enter either '1' or '2'\n")
             ID=0
             while True:
+                used=False
                 try:
                     ID = int(input("\nPlease enter a unique ID number: "))
-                    if not ID in used_IDs:
-                        used_IDs[ID]=1
+                    for i in used_IDs:
+                        if i==ID:
+                            used=True
+                    if not used:
+                        used_IDs.append(ID)
                         break
                     else:
-                        print("\nID Number is already in use.\nPlease enter a different ID number.")
+                        print(f"\nID Number {ID} is already being used.")
                 except:
                     print("\nPlease enter in a number.\n")
             tempCar = Car(make,model,year,color,mileage,price,trans,ID)
@@ -103,16 +121,17 @@ while True:
             Main_Catalog.getCarList().append(tempCar)
             Main_Catalog.updateDict(tempCar)
         case '3':
+            found=False
             try:
-                IDinput = input("\nEnter the ID of the Car you would like to remove: ")
-                ID = int(ID)
-                for i in range(len(Main_Catalog.getCarList())-1):
-                    if Main_Catalog.getCarList()[i].getID()==ID:
-                        Main_Catalog.car_list.pop(i)
-                        del used_IDs[ID]
-                        print(f"\nCar with ID number {ID} was removed.")
-                    else:
-                        print(f"\nCould not find car with ID of {ID}.")
+                IDinput = int(input("\nEnter the ID of the Car you would like to remove: "))
+                for car in range(len(Main_Catalog.getCarList())-1):
+                    if Main_Catalog.getCarList()[car].getID()==IDinput:
+                        Main_Catalog.getCarList().pop(car)
+                        found=True
+                        print(f"\nCar with ID of {IDinput} was removed.")
+                        break
+                if not found:
+                    print(f"Could not Find Car with ID of {IDinput}")
             except:
                 print("\nInvalid Input")
         case '4':
@@ -121,6 +140,7 @@ while True:
         case '5':
             sortedList = Main_Catalog.sortByID(Main_Catalog.getCarList())
             Main_Catalog.setCarList(sortedList)
+            print("\n Cars are now sorted by ID")
         case '6':
             try:
                 ID = int(input("\nPlease enter the ID of the car you want to find: "))
@@ -130,7 +150,7 @@ while True:
             except:
                 print("\nInvalid Input.")
         case '7':
-            print("\nWhat would you like to find?:\n1) A certain make\n2) A certain model 3) A certain year")
+            print("\nWhat would you like to find?:\n1) A certain make\n2) A certain model\n3) A certain year")
             choice = input("\nYour Choice: ")
             match choice:
                 case '1':
@@ -141,6 +161,14 @@ while True:
                     Main_Catalog.findSpecs(3)
                 case _:
                     print("\nInvalid Option Selected.")
+        case '8':
+            Main_Catalog.saveToJSON()
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print("Saving and Exiting...")
+            sleep(1.5)
+            break
+        case _:
+            print("Command not recognized by program.")
 
                     
                 

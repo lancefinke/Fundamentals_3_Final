@@ -1,35 +1,3 @@
 [
-    {
-        "make": "ford",
-        "model": "mustang",
-        "year": "2014",
-        "color": "red",
-        "mileage": 103000,
-        "price": 20905.0,
-        "transmission": "manual",
-        "ID": 3,
-        "verified": true
-    },
-    {
-        "make": "q",
-        "model": "q",
-        "year": "1900",
-        "color": "w",
-        "mileage": 22,
-        "price": 222.0,
-        "transmission": "automatic",
-        "ID": 5,
-        "verified": false
-    },
-    {
-        "make": "toyota",
-        "model": "camry",
-        "year": "2011",
-        "color": "white",
-        "mileage": 180000,
-        "price": 10000.0,
-        "transmission": "automatic",
-        "ID": 0,
-        "verified": true
-    }
+    
 ]
