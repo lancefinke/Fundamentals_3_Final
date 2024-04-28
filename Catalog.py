@@ -1,7 +1,5 @@
 import random
-from time import sleep
 from Car import Car
-import requests
 import json
 
 class Catalog:
@@ -13,7 +11,11 @@ class Catalog:
         #dictionary that keeps track of the quantities of every make, every model, and every year
         self.attribute_quantities:dict= {}
 
-
+    def setCarList(self,list):
+        self.car_list=list
+    
+    def getCarList(self):
+        return self.car_list
 
 
     def  updateDict(self, car:Car): #called when adding a car
@@ -31,19 +33,6 @@ class Catalog:
             self.attribute_quantities[car.getYear()]=1
         else:
             self.attribute_quantities[car.getYear()]+=1
-
-    '''verifies that the make, model and year enetred
-    are indeed from a real car.'''
-    def verifyCar(self,car:Car):
-        make = car.getMake().lower()
-        model = car.getModel().lower()
-        year = car.getYear()
-
-        api_url = 'https://api.api-ninjas.com/v1/cars?make={}&model={}&year={}'.format(make,model,year)
-        response = requests.get(api_url, headers={'X-Api-Key': 'F+ibc8OExQ83IKX/e3JJmQ==xsvvtTv25O4EXop3'})
-        data = response.json()
-        if(data!=[]):
-            car.verify()
     
 
 
@@ -146,10 +135,16 @@ class Catalog:
         with open("Car_Storage.json", 'w') as file:
             json.dump(newData,file,indent=4)
 
+    def displayCars(self):
+        for car in self.car_list:
+            if car.getVerification()==True:
+                print(f"\nVERIFIED\n{car.toString()}")
+            else:
+                print(f"\n!!!NOT VERIFIED!!!\n{car.toString()}")
+
             
             
         
-            
 
         
 

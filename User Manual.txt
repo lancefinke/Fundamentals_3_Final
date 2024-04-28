@@ -1,0 +1,49 @@
+HOW TO USE THE CATALOG
+
+To enter in a command, type the number that corresponds with the choices given. For example:
+1) Add Car
+2) Delete Car
+Entering in a 1 to the terminal will allow the user to add a car to the catalog.
+
+HOW EACH COMMAND WORKS
+
+1) List all Cars:
+This will list put every car in the catalog. It will display the make, model, year, color, mileage, price, transmission type, and ID number, as well as
+it's verification status (more info on this later).
+
+2) Add Car:
+When promted, the user will be asked to enter in the make, you wil then type out the make. After that, you will be asked to do the same with the model, year, etc.
+
+3) Remove Car:
+This deletes a car from the catalog. You will be promted to enter in a unique ID number. If you do not know the cars' IDs, simply call the List all Cars command 
+on the main screen.
+
+4) Save Data:
+This saves all the Cars to a JSON file. This allows the data to exist even when the program terminates. 
+This command can be called manually but is also called automatically upon exiting the program.
+
+5) Sort Cars:
+This command sorts all cars by ID number form smallest to largest. This command can be called manually, but
+is also called automatically when the Find Car command is promted.
+
+6) Find Car:
+This command finds a specific Car based on ID. If you need to know the ID of all the cars, simply call the List all Cars function on the main menu
+
+7) Find cars with specific make, model or year:
+This command will give a seperate series of commands:
+1) Make 
+2) Model
+3) Year
+You will enter in either 1, 2, or 3 based on what you are looking for. After making your selection, you will then be asked to enter in the make, model, or year.
+After entering in the value, you will be shown all cars that are of either a certain make, certain model, or are form a certain year.
+
+8) Exit:
+This exits the program. Your data will be automatically saved.
+
+WHAT IS VERIFICATION?
+
+If a car is verified, that means it's make, model, and year are real with 100% certainty. If a car is not verified, there is a chance it is not a real car manufactured.
+False negatives are possible if spelling errors, or abbreviations are used (example: entering in the make as chevy instead of chevrolet). The verifiation process can only go back
+to 1982.
+
+
