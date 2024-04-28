@@ -51,7 +51,7 @@ class Catalog:
     def loadData(self):
         with open("Car_Storage.json","r") as file:
             data=json.load(file)
-            for object in data["Garage"]:
+            for object in data:
                 tempCar = Car(object["make"],object["model"],object["year"],object["color"],
                             object["mileage"],object["price"],object["transmission"],object["ID"],)
                 if object["verified"]==True:
@@ -97,23 +97,41 @@ class Catalog:
 #returns all cars of a specific make, model, or year
 #user will be promted to enter in a number based on what they want to find
     def findSpecs(self,action:int): #linear search algorithm
-        while True:
             match action:
                 case 1:
                     make = input("Enter a specific make: ").lower()
                     if not make in self.attribute_quantities:
                         print(f"No {make}s were found\n")
                     else:
-                        print(f"{self.attribute_quantities[make]} {make}s were found.\n")
+                        print(f"Amount of {make}s found: {self.attribute_quantities[make]}\n")
                         for car in self.car_list:
                             if(car.getMake()==make):
                                 print(car.toString())
-                        break
+                case 2:
+                    model = input("Enter a specific model: ").lower()
+                    if not make in self.attribute_quantities:
+                        print(f"No {model}s were found\n")
+                    else:
+                        print(f"Amount of {model}s found: {self.attribute_quantities[model]}\n")
+                        for car in self.car_list:
+                            if(car.getModel()==model):
+                                print(car.toString())
+                case 3:
+                    year = input("Enter a specific year: ")
+                    if not year in self.attribute_quantities:
+                        print(f"No Cars from {year} were found\n")
+                    else:
+                        print(f"Amount of cars from {year} found: {self.attribute_quantities[make]}\n")
+                        for car in self.car_list:
+                            if(car.getYear()==year):
+                                print(car.toString())
                 
 
-
-    def updateJSON(self, car:Car):
-        carObj = {
+    #saves car list data to JSON file can be called manually but is also called automatically when program terminates
+    def saveToJSON(self):
+        newData = []
+        for car in self.car_list:
+            carObj = {
             "make":car.getMake(),
             "model":car.getModel(),
             "year":car.getYear(),
@@ -124,21 +142,25 @@ class Catalog:
             "ID":car.getID(),
             "verified":car.getVerification()
             }
-        with open("Car_Storage.json", 'r+') as file:
-            data = json.load(file)
-            data["Garage"].append(carObj)
-            file.seek(0)
-            json.dump(data,file,indent=4)
+            newData.append(carObj)
+        with open("Car_Storage.json", 'w') as file:
+            json.dump(newData,file,indent=4)
+
+            
+            
+        
+            
+
+        
+
+
+
+    
 
 
 
 
 
-c = Catalog()
-c.car_list.append(Car("ford","mustang","2014","red",100000,20000.00,"manual",50))
-c.updateDict(Car("ford","mustang","2014","red",100000,20000.00,"manual",50))
-
-c.findSpecs(1)
 
 
 

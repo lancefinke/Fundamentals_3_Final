@@ -1,15 +1,13 @@
-{
-    "Garage": [
-        {
-            "make": "ford",
-            "model": "mustang",
-            "year": "2014",
-            "color": "red",
-            "mileage": 103457,
-            "price": 20905,
-            "transmission": "manual",
-            "ID": 1,
-            "verified": false
-        }
-    ]
-}
+[
+    {
+        "make": "f",
+        "model": "d",
+        "year": "r",
+        "color": "d",
+        "mileage": 5,
+        "price": 1.0,
+        "transmission": "r",
+        "ID": 9,
+        "verified": false
+    }
+]
