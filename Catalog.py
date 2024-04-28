@@ -1,4 +1,5 @@
 import random
+from time import sleep
 from Car import Car
 import requests
 import json
@@ -138,16 +139,18 @@ def updateJSON(car:Car):
         json.dump(data,file,indent=4)
 
 
-c1 = Car("nissan","altima","1995","red",54921,40000.00,"manual",12)
 
+while True:
+    print("Welcome to the Car Catalog. Please enter in one of the commands below, or type H for help.\n");
+    print("1) Add Car\n2) Remove Car\n3) List Catalog\n4) Find Car\n5)Find Cars with specific make model or year\n6) Sort Cars by ID\n7) Exit")
+    choice = (int)(input())
+    match choice:
+        case
+        case 7:
+            print("Exiting Catalog...")
+            sleep(1.5)
+            break
 
-print(c1.getVerification())
-verifyCar(c1)
-print(c1.getVerification())
-car_list.append(c1)
-updateDict(c1)
-print(attribute_quantities["nissan"])
-updateJSON(c1)
 
 
 
