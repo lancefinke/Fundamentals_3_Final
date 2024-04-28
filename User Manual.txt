@@ -15,8 +15,8 @@ it's verification status (more info on this later).
 When promted, the user will be asked to enter in the make, you wil then type out the make. After that, you will be asked to do the same with the model, year, etc.
 
 3) Remove Car:
-This deletes a car from the catalog. You will be promted to enter in a unique ID number. If you do not know the cars' IDs, simply call the List all Cars command 
-on the main screen.
+This deletes a car from the catalog. You will be promted to enter in the index of the car you want to delete. To find the index, simplay display the cars and the index will be listed
+for each one
 
 4) Save Data:
 This saves all the Cars to a JSON file. This allows the data to exist even when the program terminates. 

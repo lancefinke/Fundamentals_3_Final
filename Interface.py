@@ -11,7 +11,6 @@ Main_Catalog = carCatolog()
 Main_Catalog.loadData()
 
 
-
 #keeps track of every used ID.
 used_IDs = []
 for car in Main_Catalog.getCarList():
@@ -19,6 +18,7 @@ for car in Main_Catalog.getCarList():
 
 #array that validates date
 regex =[r"^[1][9]+$",r"^[2][0]+$",r"^[0,1][0-9]+$",r"^[2][0-4]+$"]
+
 
 
 '''verifies that the make, model and year enetred
@@ -123,26 +123,21 @@ while True:
             Main_Catalog.getCarList().append(tempCar)
             Main_Catalog.updateDict(tempCar)
         case '3':
-            found=False
             try:
-                IDinput = int(input("\nEnter the ID of the Car you would like to remove: "))
-                for car in range(len(Main_Catalog.getCarList())-1):
-                    if Main_Catalog.getCarList()[car].getID()==IDinput:
-                        Main_Catalog.getCarList().pop(car)
-                        found=True
-                        print(f"\nCar with ID of {IDinput} was removed.")
-                        break
-                if not found:
-                    print(f"Could not Find Car with ID of {IDinput}")
+                index = int(input("\nEnter the index of the Car you would like to remove: "))
+                if(index<len(Main_Catalog.getCarList())):
+                    Main_Catalog.getCarList().pop(index)
+                else:
+                    print("Index entered was out of range.")
             except:
                 print("\nInvalid Input")
         case '4':
             Main_Catalog.saveToJSON()
-            print("\nDate saved.")
+            print("\nData saved.")
         case '5':
             sortedList = Main_Catalog.sortByID(Main_Catalog.getCarList())
             Main_Catalog.setCarList(sortedList)
-            print("\n Cars are now sorted by ID")
+            print("\nCars are now sorted by ID")
         case '6':
             try:
                 ID = int(input("\nPlease enter the ID of the car you want to find: "))

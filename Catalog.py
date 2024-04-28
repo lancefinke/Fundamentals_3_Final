@@ -98,7 +98,7 @@ class Catalog:
                                 print(car.toString())
                 case 2:
                     model = input("Enter a specific model: ").lower()
-                    if not make in self.attribute_quantities:
+                    if not model in self.attribute_quantities:
                         print(f"No {model}s were found\n")
                     else:
                         print(f"Amount of {model}s found: {self.attribute_quantities[model]}\n")
@@ -136,11 +136,14 @@ class Catalog:
             json.dump(newData,file,indent=4)
 
     def displayCars(self):
+        i=0
         for car in self.car_list:
+            print(f"Index: {i}")
             if car.getVerification()==True:
-                print(f"\nVERIFIED\n{car.toString()}")
+                print(f"VERIFIED\n{car.toString()}")
             else:
-                print(f"\n!!!NOT VERIFIED!!!\n{car.toString()}")
+                print(f"!!!NOT VERIFIED!!!\n{car.toString()}")
+        i+=1
 
             
             
