@@ -39,12 +39,11 @@ After entering in the value, you will be shown all cars that are of either a cer
 
 8) Exit:
 This exits the program. Your data will be automatically saved.
+!!!IMPORTANT!!! Please exit the program with the exit command. This ensure all data is saved.
 
 WHAT IS VERIFICATION?
 
 If a car is verified, that means it's make, model, and year are real with 100% certainty. If a car is not verified, there is a chance it is not a real car manufactured.
 False negatives are possible if spelling errors, or abbreviations are used (example: entering in the make as chevy instead of chevrolet). The verifiation process can only go back
-to 1982. TO AVOID FALSE NEGATIVES, make sure you enter in the full and offical names of cars. For example don't input the make of the Mazda Mx-5 Miata as "Miata", input 
-the make as "MX-5 Miata"
-
+to 1982. TO AVOID FALSE NEGATIVES, make sure you enter in the full and offical names of a car's make and model.
 
