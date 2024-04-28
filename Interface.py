@@ -67,6 +67,8 @@ while True:
                             break
                         else:
                            print("\nPlease enter in a valid year") 
+                    else:
+                        print("\nPlease enter in a valid year") 
                 else:
                     print("\nPlease enter in a valid year")
             color = input("\nWhat color is the car: ")

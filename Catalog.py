@@ -110,7 +110,7 @@ class Catalog:
                     if not year in self.attribute_quantities:
                         print(f"No Cars from {year} were found\n")
                     else:
-                        print(f"Amount of cars from {year} found: {self.attribute_quantities[make]}\n")
+                        print(f"Amount of cars from {year} found: {self.attribute_quantities[year]}\n")
                         for car in self.car_list:
                             if(car.getYear()==year):
                                 print(car.toString())

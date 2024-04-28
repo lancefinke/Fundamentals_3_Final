@@ -1,3 +1,35 @@
 [
-    
+    {
+        "make": "ford",
+        "model": "bronco",
+        "year": "1990",
+        "color": "white",
+        "mileage": 78500,
+        "price": 9000.0,
+        "transmission": "manual",
+        "ID": 4,
+        "verified": true
+    },
+    {
+        "make": "q",
+        "model": "q",
+        "year": "1900",
+        "color": "blue",
+        "mileage": 8192818728,
+        "price": 78.0,
+        "transmission": "automatic",
+        "ID": 7,
+        "verified": false
+    },
+    {
+        "make": "ferrari",
+        "model": "250 gto",
+        "year": "1962",
+        "color": "red",
+        "mileage": 5549,
+        "price": 40000000.0,
+        "transmission": "manual",
+        "ID": 10,
+        "verified": false
+    }
 ]
