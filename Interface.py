@@ -124,8 +124,9 @@ while True:
         case '6':
             try:
                 ID = int(input("\nPlease enter the ID of the car you want to find: "))
-                Main_Catalog.sortByID()
-                Main_Catalog.findID(Main_Catalog.getCarList(),0,len(Main_Catalog.getCarList())-1,ID)
+                sortedList = Main_Catalog.sortByID(Main_Catalog.getCarList())
+                Main_Catalog.setCarList(sortedList)
+                print(Main_Catalog.findID(Main_Catalog.getCarList(),0,len(Main_Catalog.getCarList())-1,ID))
             except:
                 print("\nInvalid Input.")
         case '7':
