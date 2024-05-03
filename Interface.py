@@ -16,8 +16,6 @@ used_IDs = []
 for car in Main_Catalog.getCarList():
     used_IDs.append(car.getID())
 
-print(used_IDs)
-
 
 #array that validates date
 regex =[r"^[1][9]+$",r"^[2][0]+$",r"^[0,1][0-9]+$",r"^[2][0-4]+$"]
