@@ -1,13 +1,123 @@
 [
     {
-        "make": "q",
-        "model": "q",
-        "year": "1900",
-        "color": "s",
-        "mileage": 1,
-        "price": 1.0,
+        "make": "chevrolet",
+        "model": "corvette",
+        "year": "1973",
+        "color": "blue",
+        "mileage": 37000,
+        "price": 17000.0,
+        "transmission": "manual",
+        "ID": 1,
+        "verified": false
+    },
+    {
+        "make": "chevrolet",
+        "model": "suburban",
+        "year": "2000",
+        "color": "white",
+        "mileage": 300000,
+        "price": 5000.0,
+        "transmission": "automatic",
+        "ID": 2,
+        "verified": true
+    },
+    {
+        "make": "chevrolet",
+        "model": "silverado",
+        "year": "2014",
+        "color": "white",
+        "mileage": 114000,
+        "price": 24000.0,
+        "transmission": "automatic",
+        "ID": 3,
+        "verified": true
+    },
+    {
+        "make": "chevrolet",
+        "model": "corvette",
+        "year": "2007",
+        "color": "red",
+        "mileage": 63000,
+        "price": 35000.0,
+        "transmission": "manual",
+        "ID": 4,
+        "verified": true
+    },
+    {
+        "make": "chevrolet",
+        "model": "suburban",
+        "year": "2023",
+        "color": "white",
+        "mileage": 4832,
+        "price": 60000.0,
+        "transmission": "automatic",
+        "ID": 5,
+        "verified": true
+    },
+    {
+        "make": "chevrolet",
+        "model": "camaro",
+        "year": "1976",
+        "color": "blue",
+        "mileage": 45000,
+        "price": 40000.0,
+        "transmission": "manual",
+        "ID": 6,
+        "verified": false
+    },
+    {
+        "make": "pontiac",
+        "model": "trans am",
+        "year": "1976",
+        "color": "black and gold",
+        "mileage": 20000,
+        "price": 10000.0,
+        "transmission": "manual",
+        "ID": 7,
+        "verified": false
+    },
+    {
+        "make": "chevrolet",
+        "model": "silverado",
+        "year": "2018",
+        "color": "pearly white",
+        "mileage": 95060,
+        "price": 30000.0,
+        "transmission": "automatic",
+        "ID": 8,
+        "verified": true
+    },
+    {
+        "make": "chevrolet",
+        "model": "silverado",
+        "year": "2020",
+        "color": "white",
+        "mileage": 76000,
+        "price": 38000.0,
+        "transmission": "automatic",
+        "ID": 9,
+        "verified": true
+    },
+    {
+        "make": "chevrolet",
+        "model": "silverado",
+        "year": "2017",
+        "color": "white",
+        "mileage": 92000,
+        "price": 28000.0,
         "transmission": "automatic",
         "ID": 10,
-        "verified": false
+        "verified": true
+    },
+    {
+        "make": "chevrolet",
+        "model": "blazer",
+        "year": "1991",
+        "color": "dark green",
+        "mileage": 23400,
+        "price": 12000.0,
+        "transmission": "automatic",
+        "ID": 11,
+        "verified": true
     }
 ]

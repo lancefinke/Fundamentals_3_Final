@@ -16,6 +16,9 @@ used_IDs = []
 for car in Main_Catalog.getCarList():
     used_IDs.append(car.getID())
 
+print(used_IDs)
+
+
 #array that validates date
 regex =[r"^[1][9]+$",r"^[2][0]+$",r"^[0,1][0-9]+$",r"^[2][0-4]+$"]
 
@@ -124,13 +127,18 @@ while True:
             Main_Catalog.updateDict(tempCar)
         case '3':
             try:
-                index = int(input("\nEnter the index of the Car you would like to remove: "))
-                if(index<len(Main_Catalog.getCarList())):
+                index = int(input("\nEnter the index of the Car you would like to remove: "))-1
+                if(index<len(Main_Catalog.getCarList()) and Main_Catalog.getCarList()[index].getID() in used_IDs):
+                    ID = Main_Catalog.getCarList()[index].getID()
+                    for i in range(len(used_IDs)-1):
+                        if used_IDs[i]==ID:
+                            used_IDs.pop(i)
                     Main_Catalog.getCarList().pop(index)
+                    print(f"Car at index {index+1} was removed.")
                 else:
                     print("Index entered was out of range.")
             except:
-                print("\nInvalid Input")
+               print("\nInvalid Input")
         case '4':
             Main_Catalog.saveToJSON()
             print("\nData saved.")

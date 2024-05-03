@@ -136,14 +136,18 @@ class Catalog:
             json.dump(newData,file,indent=4)
 
     def displayCars(self):
-        i=0
+        i=1
         for car in self.car_list:
             print(f"Index: {i}")
             if car.getVerification()==True:
                 print(f"VERIFIED\n{car.toString()}")
             else:
                 print(f"!!!NOT VERIFIED!!!\n{car.toString()}")
-        i+=1
+            i+=1
+            
+
+
+        
 
             
             
